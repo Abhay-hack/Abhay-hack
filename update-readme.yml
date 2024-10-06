@@ -1,0 +1,41 @@
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Get Contribution Streak
+        run: |
+          npm install -g @sindresorhus/github-contributions-api
+          streak=$(github-contributions-api --user=YOUR_GITHUB_USERNAME | jq '.currentStreak')
+          echo "## Hi there! 👋" > README.md
+          echo "" >> README.md
+          echo "I'm **Abhay Gupta**, a full-stack developer specializing in web applications. I love building software that makes a difference and contributing to the open-source community." >> README.md
+          echo "" >> README.md
+          echo "- 🔥 **Current Streak:** $streak days of consistent coding!" >> README.md
+          echo "- 🌱 I’m currently learning **React, Tailwind CSS, and Flask**" >> README.md
+          echo "- 🚀 Recently built a weather forecast project using **Go** as a CLI application" >> README.md
+          echo "- 👯 I’m looking to collaborate on **Python** or **Go** projects" >> README.md
+          echo "- 💡 Passionate about integrating **software** with **hardware** for innovative solutions" >> README.md
+          echo "- 📫 How to reach me: [LinkedIn](https://www.linkedin.com/in/abhay-gupta-1257b6248/) | [Email](mailto:ag4081315@gmail.com)" >> README.md
+          echo "- ⚡ Fun fact: I enjoy working on projects that combine software with real-world hardware components!" >> README.md
+
+      - name: Commit Changes
+        run: |
+          git config --local user.name "GitHub Action"
+          git config --local user.email "action@github.com"
+          git add README.md
+          git commit -m "Update README with current streak"
+          git push
