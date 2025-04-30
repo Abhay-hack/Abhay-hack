@@ -66,8 +66,6 @@ I'm **Abhay Gupta**, a passionate **Full-Stack Developer** with expertise in **w
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Abhay-hack&show_icons=true&theme=radical" width="48%" alt="GitHub Stats">
-  <img src="https://github-readme-streak-stats.demolab.com/?user=Abhay-hack&theme=radical" width="48%" alt="GitHub Streak">
-</p>
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Abhay-hack&layout=compact&theme=radical" width="48%" alt="Top Languages">
